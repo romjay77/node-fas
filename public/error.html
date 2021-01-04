@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <link href="https://fonts.googleapis.com/css?family=Encode+Sans+Semi+Condensed:100,200,300,400" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <link href="css/error.css" rel="stylesheet">
+  <title>error</title>
+ </head> 
+<body class="loading">
+  <h2>Упс 😭</h2>
+  <h3>Что то поршло не так</h3>
+  <div class="gears">
+    <div class="gear one">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="gear two">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <div class="gear three">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      setTimeout(function(){
+        $('body').removeClass('loading');
+      }, 1000);
+    });
+  </script>
+</body>
+</html>

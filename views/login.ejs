@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>Log In</title>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="MobileOptimized" content="width" />
+		<meta name="HandheldFriendly" content="true" />
+
+		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		
+		
+		<link rel="stylesheet" type="text/css" href="/css/main.css">
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<div class="m-5 form-group d-flex justify-content-center" id="form">
+			<form class="" action="/admin" method="POST">
+				<div class="m-2 d-flex justify-content-center">
+					Log In
+				</div>
+				<div class="m-2" data-validate="Введите login">
+					<input class="form-control" type="text" name="login" id="login" placeholder="login">
+				</div>			
+				<div class="m-2" data-validate = "Введите пароль">
+					<input class="form-control" type="password" id="pass" name="pass" placeholder="password">
+				</div>	
+				<div class="m-2 d-flex justify-content-center">
+					<button type="submit" class="btn btn-outline-success">
+						<span>
+							<i class="fab fa-telegram-plane"></i>
+							Отправить
+						</span>
+					</button>
+				</div>
+			</form>
+		</div>
+
+	<script>
+		(function ($) {
+			"use strict";
+			var input = $('.validate-input .input100');
+			$('.validate-form').on('submit',function(){
+				var check = true;
+
+				for(var i=0; i<input.length; i++) {
+					if(validate(input[i]) == false){
+						showValidate(input[i]);
+						check=false;
+					}
+				}
+
+				return check;
+			});
+			
+			$('.validate-form .input100').each(function(){
+				$(this).focus(function(){
+				hideValidate(this);
+				});
+			});
+
+			function validate (input) {
+				if($(input).val().trim() == ''){
+					return false;
+				}
+			}
+
+			function showValidate(input) {
+				var thisAlert = $(input).parent();
+
+				$(thisAlert).addClass('alert-validate');
+			}
+
+			function hideValidate(input) {
+				var thisAlert = $(input).parent();
+
+				$(thisAlert).removeClass('alert-validate');
+			}
+		})(jQuery);
+	</script>
+	</body>
+</html>

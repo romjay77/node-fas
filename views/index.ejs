@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title><%- model.title1 %></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="format-detection" content="telephone=yes"/>
+		<meta name="format-detection" content="address=yes" />
+		<meta name="MobileOptimized" content="width" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="description" content="<%- model.description1 %>">
+		<meta name="robots" content="index" />
+
+		<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.1/css/all.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+		<link rel="stylesheet" href="bootstrap/sboots.css">
+
+		<script src="bootstrap/sjquery.js"></script>
+		<script src="bootstrap/sboots.js"></script>
+	</head>
+
+	<body>
+		<nav class="nav-menu">
+			<div class="header">
+				<a class="brand" href=""><img class="logo" border="0" alt="логотип утепление фасадов, декоративные отделки, покраска фасада быстро недорого качественно" src="images/log1.gif"></a>
+			</div>
+
+			<div class="items">
+				<ul class="nav navbar-nav">
+					<li><a class="item" href="#start">ГЛАВНАЯ</a></li>
+					<li><a class="item" href="#services">УСЛУГИ</a></li>
+					<li><a class="item" href="#about">О НАС</a></li>
+					<li><a class="item" href="#projects">ПРОЕКТЫ</a></li>
+					<li><a class="item" href="#contact">КОНТАКТЫ</a></li>
+				</ul>
+			</div>
+
+			<div class="icon">
+				<ul>
+					<li class="toggle">
+						<a>
+							<div class="pbot">
+									<span class="bot">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+
+											<path d="M2 16 L30 16" />
+
+										</svg>
+									</span>
+									<span class="bot botM">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+
+											<path d="M2 16 L30 16" />
+
+										</svg>
+									</span>
+									<span class="bot botL">
+										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+
+											<path d="M2 16 L30 16" />
+
+										</svg>
+									</span>
+							</div>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+
+		<div id="start" class="background">	
+			<div class="gradient"></div>
+			<div class="box"></div>
+
+			<div class="main-name">
+				<div>
+					<div class="phone">
+						<a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a>
+						<br>
+						ФАСАДНЫЕ РАБОТЫ
+						<%  if (model.inst) { %> 
+							<a href="<%- model.inst %>" target="_blank"><i class="fab fa-instagram"></i></a>
+						<% } %> 
+					</div>
+					<a href="#services">
+						<div class="arrow">
+						<img alt="иконка стрелки вниз" 
+						src="https://static.wixstatic.com/media/c19c76_376dc1d20bd348b99c4a732a1d6d7c81.png/v1/fill/w_54,h_31,al_c,q_80,usm_0.66_1.00_0.01/c19c76_376dc1d20bd348b99c4a732a1d6d7c81.gif">
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<div id="services" class="services-box">
+			<div>
+				<h2 class="article">УСЛУГИ</h2>
+				<div class="line"><div></div></div>
+				<div class="s-tel"><a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></div>
+			</div>
+
+			<div class="group">
+				<%- model.services %>
+			</div>
+			<div class="points"></div>
+		</div>
+
+		<div id="about" class="about-us">
+			<div class="box">
+				<div>
+					<h2 class="article">О НАС</h2>
+					<div class="line"><div></div></div>
+				</div>
+				<div class="text"><%- model.aboutus %></div>
+				<h3 class="article">ЗВОНИТЕ ПО НОМЕРУ</h3>
+				<div class="s-tel"><a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></div>
+			</div>
+		</div>
+
+		<div class="offers">
+			<h3 class="article">НАШИ ПРЕИМУЩЕСТВА</h3>
+			<div class="box">
+				<% model.advantages.forEach(function(element) { %>
+					<div class="offer">
+						<div><img src="<%- element.image %>" alt="<%- element.alt %>"></div>
+						<div><%- element.name %></div>
+					</div>
+				<% }); %>
+			</div>
+		</div>
+
+		<div id="projects" class="projects">
+			<div>
+				<h2 class="article">ПРОЕКТЫ</h2>
+				<div class="line"><div></div></div>
+				<div class="s-tel"><a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></div>
+			</div>
+			<div class="box">
+				<%- model.projects %>
+			</div>
+		</div>
+
+		<div id="contact" class="contact">
+			<div>
+				<h2 class="article">КОНТАКТЫ</h2>
+				<div class="line"><div></div></div>
+				<div class="s-tel"><a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></div>
+			</div>
+			<div class="box">
+				<div class="left-box">
+					<div class="questions">
+						<% model.faq.forEach(function(element) { %>
+							<div class="question">
+								<div class="ask"><%- element.question %><br>
+								</div>
+								<div class="answer"><%- element.answer %><br>
+								</div>
+							</div>
+						<% }); %>
+					</div>
+
+					<div class="info">
+						<span class="s-text">Если у Вас остались вопросы, Вы можете нам позвонить или заполнить данную форму.</span>
+						<span class="s-text">Телефон: <a class="s-phone"href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></span>
+						<span class="s-text">Электронная почта: <a class="email"href="mailto:info@fasadni.by"><email>info@fasadni.by</email></a></span>					
+						<span class="s-text">Разработчик сайта: <a class="email"href="mailto:romjay77@gmail.com"><email>romjay77@gmail.com</email></a></span>
+					</div>
+				</div>
+
+				<div class="form-box">
+					<form class="form validate-form" action="/send" method="POST">
+						<div class="s-text">
+							Закажите звонок
+						</div>
+
+						<div class="wrap-input validate-input" data-validate="Введите полное имя">
+							<input class="input" type="text" name="name" id="name" placeholder="Полное имя">
+							<span class="focus-input"></span>
+						</div>
+
+						<div class="wrap-input validate-input" data-validate="Введите эл. почту: e@a.x">
+							<input class="input" type="text" id="email" name="email" placeholder="E-mail">
+							<span class="focus-input"></span>
+						</div>		
+
+						<div class="wrap-input validate-input" data-validate="Введите телефон">
+							<input class="input" type="text" id="phone" name="phone" placeholder="Телефон">
+							<span class="focus-input"></span>
+						</div>			
+
+						<div class="wrap-input validate-input" data-validate="Введите сообщение">
+							<textarea class="input" name="message" id="message" placeholder="Сообщение"></textarea>
+							<span class="focus-input"></span>
+						</div>
+						<div class="form-btn">
+							<button>
+								<span>
+									<i class="far fa-paper-plane"></i>
+									Отправить
+								</span>
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div id="root-frame-bckg" ></div>
+			<div id="frame"></div>
+		</div>
+
+		<script>
+			const model = {
+				title1: `<%- model.title1 %>`,
+				title2: `<%- model.title2 %>`,
+				title3: `<%- model.title3 %>`,
+				title4: `<%- model.title4 %>`,
+				title5: `<%- model.title5 %>`,
+				description1: `<%- model.description1 %>`,
+				description2: `<%- model.description2 %>`,
+				description3: `<%- model.description3 %>`,
+				description4: `<%- model.description4 %>`,
+				description5: `<%- model.description5 %>`,
+				aboutus: `<%- model.aboutus %>`,
+				email: `<%- model.email %>`,
+				phone: `<%- model.phone %>`
+			}
+		</script>
+		<script src="js/main.js"></script>
+	</body>
+</html>
+

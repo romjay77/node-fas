@@ -1,0 +1,346 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<title>Админ панель</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="MobileOptimized" content="width" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="robots" content="noindex" />
+
+		<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.1/css/all.css">
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="css/admin.css">
+
+		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	</head>
+
+	<body>
+		
+		<div class="d-flex justify-content-around m-3 align-items-center">
+			<h1>Admin панель</h1>
+			<form action="/admin/logOut" method="POST">
+				<input class="btn btn-outline-danger" type="submit" value="Выход">
+			</form>
+		</div>
+
+		<div class="col">
+			<ul class="nav nav-tabs" role="tablist">
+				<li class="nav-item">
+					<a class="nav-link active" data-toggle="tab" href="#home">Логин</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#project">Проекты</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#services">Услуги</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#content">Основной контент</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#faq">Вопросы oтветы</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" data-toggle="tab" href="#advantages">Преимущества</a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="tab-content">
+			<div id="home" class="container tab-pane active"><br>
+				<h3>Логин</h3>
+				<div class="overflow-auto">
+					<form action="/admin/changeLogin" method="POST">
+						<table id="credentials" class="table table-striped">
+							<tr>
+								<td>Логин</td>
+								<td><p><%- admin.login %></p><input class="form-control col hid" type="text" id="login" name="login" value="<%- admin.login %>"></td>
+								<td><a class = "edit btn btn-outline-warning">Редактировать</a></td>
+							</tr>
+	
+							<tr>
+								<td>Пароль</td>
+								<td><p><%- admin.pass %></p><input class="form-control col hid" type="text" id="pass" name="pass" value="<%- admin.pass %>"></td>
+								<td><a class = "edit btn btn-outline-warning">Редактировать</a></td>
+							</tr>
+	
+							<% admin.mail.forEach(function(el, indx) { %>
+								<tr>
+									<td>Почта администратора для рассылки</td>
+									<td><p><%- el %></p><input class="form-control col hid" type="text" name="mail" value="<%- el %>"></td>
+									<td><a class = "remove btn btn-outline-danger">Удалить</a></td>
+								</tr>			
+							<% }); %>
+	
+							<tr id="add-mail">
+								<td></td>
+								<td><a class = "btn btn-outline-success">Добавить почту</a></td>
+								<td></td>
+							</tr>
+						</table>
+						<input type="submit" value="Сохранить" class = "btn btn-outline-secondary" disabled>
+					</form>
+				</div>
+			</div>
+
+			<div id="project" class="container tab-pane fade"><br>
+				<h3>Проекты</h3>
+				<div class="overflow-auto">
+					<table class="table table-striped">
+						<tbody>
+							<% projects.forEach(function(el, indx) { %>
+							<tr>
+								<td><%- indx + 1 %></td>
+								<td><%- el.text %></td>
+								<td>
+									<form action="/admin/removeProject" method="POST">
+										<input type="hidden" name="projectName" value="<%- el.text%>">
+										<input type="submit" value="удалить" class = "btn btn-outline-danger">
+									</form>
+								</td>
+							</tr>
+							<% }); %>
+						</tbody>
+					</table>
+				</div>
+
+				<form encType="multipart/form-data" action="/admin/addProject" class="m-1 hid" id="addProj" method="POST">
+					<div class="row mt-5">
+						<div class="col-12 mt-1 col-lg-6" data-validate = "Введите название проекта">
+							<input type="text" name="name" class="inpt form-control" placeholder="Название проекта">
+						</div>
+						<div class="col-12 mt-1 ml-1 col-lg-5 custom-file" data-validate="Выберите фото">
+							<input type="file" name="photo" multiple class="inpt photo custom-file-input" id="bc">
+							<label class="custom-file-label" for="bc">Фото</label>
+						</div>
+						<div class="col-11 mt-2">
+							<textarea rows="6" class="form-control" name="description" placeholder="Описание проекта"></textarea>
+						</div>
+						<div class="col-11 mt-2">
+							<textarea rows="6" class="form-control" name="alt" placeholder="Описание изображений"></textarea>
+						</div>
+					</div>
+					<input type="submit" value="Сохранить" class ="m-3 btn btn-outline-success">
+				</form>
+				
+				<div class="m-5 d-flex justify-content-center">
+					<button class = "btn btn-outline-success">Добавить проект</button>
+				</div>
+			</div>
+
+			<div id="content" class="container tab-pane fade"><br>
+				<h3>Основной контент</h3>
+				<form action="/admin/updateModel" class="m-1" method="POST">
+					<div class="row mt-5">
+						<div class="col-12 m-1">
+							<label class="form-label">Загаловок "Главная"</label>
+							<input type="text" name="title1" class="form-control" value="<%- model.title1 %>" placeholder="Загаловок 'Главная'">
+						</div>
+
+						<div class="col-12 m-1 mb-3">
+							<label class="form-label">Описание "Главная"</label>
+							<textarea rows="6" name="description1" class="form-control" placeholder="Описание 'Главная'"><%- model.description1 %></textarea>
+						</div>
+
+						<div class="col-12 m-1">
+							<label class="form-label">Загаловок "Услуги"</label>
+							<input type="text" name="title2" class="form-control" value="<%- model.title2 %>" placeholder="Загаловок 'Услуги'">
+						</div>
+
+						<div class="col-12 m-1 mb-3">
+							<label class="form-label">Описание "Услуги"</label>
+							<textarea rows="6" name="description2" class="form-control" placeholder="Описание 'Услуги'"><%- model.description2 %></textarea>
+						</div>
+
+						<div class="col-12 m-1">
+							<label class="form-label">Загаловок "О Нас"</label>
+							<input type="text" name="title3" class="form-control" value="<%- model.title3 %>" placeholder="Загаловок 'О Нас'">
+						</div>
+
+						<div class="col-12 m-1 mb-3">
+							<label class="form-label">Описание "О Нас"</label>
+							<textarea rows="6" name="description3" class="form-control" placeholder="Описание 'О Нас'"><%- model.description3 %></textarea>
+						</div>
+
+						<div class="col-12 m-1">
+							<label class="form-label">Загаловок "Проекты"</label>
+							<input type="text" name="title4" class="form-control" value="<%- model.title4 %>" placeholder="Загаловок 'Проекты'">
+						</div>
+
+						<div class="col-12 m-1 mb-3">
+							<label class="form-label">Описание "Проекты"</label>
+							<textarea rows="6" name="description4" class="form-control" placeholder="Описание 'Проекты'"><%- model.description4 %></textarea>
+						</div>
+
+						<div class="col-12 m-1">
+							<label class="form-label">Загаловок "Контакты"</label>
+							<input type="text" name="title5" class="form-control" value="<%- model.title5 %>" placeholder="Загаловок 'Контакты'">
+						</div>
+
+						<div class="col-12 m-1 mb-3">
+							<label class="form-label">Описание "Контакты"</label>
+							<textarea rows="6" name="description5" class="form-control" placeholder="Описание 'Контакты'"><%- model.description5 %></textarea>
+						</div>
+
+						<div class="col-12 m-1 mb-3">
+							<label class="form-label">Содержанеи секции о нас</label>
+							<textarea rows="6" class="form-control" name="aboutus" placeholder="о нас"><%- model.aboutus %></textarea>
+						</div>
+
+						<div class="col-12 m-1">
+							<label class="form-label">Телефон</label>
+							<input type="text" name="phone" class="form-control" value="<%- model.phone %>" placeholder="Телефон">
+						</div>
+
+						<div class="col-12 m-1">
+							<label class="form-label">Почта</label>
+							<input type="text" name="email" class="form-control" value="<%- model.email %>" placeholder="Почта">
+						</div>
+
+						<div class="col-12 m-1">
+							<label class="form-label">Инстаграм</label>
+							<input type="text" name="inst" class="form-control" value="<%- model.inst %>" placeholder="Инстаграм">
+						</div>
+					</div>
+					<input type="submit" value="Сохранить" class ="m-3 btn btn-outline-success">
+				</form>
+			</div>
+
+			<div id="services" class="container tab-pane fade"><br>
+				<h3>Услуги</h3>
+
+				<div class="overflow-auto">
+					<table class="table table-striped">
+						<tbody>
+							<% services.forEach(function(el, indx) { %>
+							<tr>
+								<td><%- indx + 1 %></td>
+								<td><%- el.name %></td>
+								<td>
+									<form action="/admin/removeService" method="POST">
+										<input type="hidden" name="serviceName" value="<%- el.name%>">
+										<input type="submit" value="удалить" class = "btn btn-outline-danger">
+									</form>
+								</td>
+							</tr>
+							<% }); %>
+						</tbody>
+					</table>
+				</div>
+
+				<form encType="multipart/form-data" action="/admin/addService" class="m-1 d-none" method="POST">
+					<div class="row mt-5">
+						<div class="col-12 mt-1 col-lg-6">
+							<input type="text" name="name" class="form-control" placeholder="Название услуги">
+						</div>
+						<div class="col-12 mt-1 ml-1 col-lg-5 custom-file">
+							<input type="file" name="image" class="custom-file-input" id="s-image">
+							<label class="custom-file-label" for="s-image">Изображение</label>
+						</div>
+						<div class="col-11 mt-2">
+							<textarea rows="6" class="form-control" name="description" placeholder="Описание услуги"></textarea>
+						</div>
+						<div class="col-11 mt-2">
+							<textarea rows="6" class="form-control" name="alt" placeholder="Описание изображений"></textarea>
+						</div>
+					</div>
+					<input type="submit" value="Сохранить" class ="m-3 btn btn-outline-success">
+				</form>
+				
+				<div class="m-5 d-flex justify-content-center">
+					<button class="add btn btn-outline-success">Добавить услугу</button>
+				</div>
+			</div>
+
+			<div id="faq" class="container tab-pane fade"><br>
+				<h3>Вопросы oтветы</h3>
+
+				<div class="overflow-auto">
+					<table class="table table-striped">
+						<tbody>
+							<% model.faq.forEach(function(el, indx) { %>
+								<tr>
+									<td><%- indx + 1 %></td>
+									<td><%- el.question %></td>
+									<td><%- el.answer %></td>
+									<td>
+										<form action="/admin/removeQestion" method="POST">
+											<input type="hidden" name="question" value="<%- el.question%>">
+											<input type="submit" value="удалить" class = "btn btn-outline-danger">
+										</form>
+									</td>
+								</tr>
+							<% }); %>
+						</tbody>
+					</table>
+				</div>
+
+				<form encType="multipart/form-data" action="/admin/addQestion" class="m-1 d-none" method="POST">
+					<div class="row mt-5">
+						<div class="col-11 mt-2">
+							<textarea rows="6" class="form-control" name="question" placeholder="Вопрос"></textarea>
+						</div>
+						<div class="col-11 mt-2">
+							<textarea rows="6" class="form-control" name="answer" placeholder="Ответ"></textarea>
+						</div>
+					</div>
+					<input type="submit" value="Сохранить" class ="m-3 btn btn-outline-success">
+				</form>
+				
+				<div class="m-5 d-flex justify-content-center">
+					<button class="add btn btn-outline-success">Добавить вопрос oтвет</button>
+				</div>
+			</div>
+
+			<div id="advantages" class="container tab-pane fade"><br>
+				<h3>Преимущества</h3>
+
+				<div class="overflow-auto">
+					<table class="table table-striped">
+						<tbody>
+							<% model.advantages.forEach(function(el, indx) { %>
+								<tr>
+									<td><%- indx + 1 %></td>
+									<td><%- el.name %></td>
+									<td>
+										<form action="/admin/removeAdvantage" method="POST">
+											<input type="hidden" name="name" value="<%- el.name%>">
+											<input type="submit" value="удалить" class = "btn btn-outline-danger">
+										</form>
+									</td>
+								</tr>
+							<% }); %>
+						</tbody>
+					</table>
+				</div>
+
+				<form encType="multipart/form-data" action="/admin/addAdvantage" class="m-1 d-none" method="POST">
+					<div class="row mt-5">
+						<div class="col-12 mt-1 col-lg-6">
+							<input type="text" name="name" class="form-control" placeholder="Название преимущества">
+						</div>
+						<div class="col-12 mt-1 ml-1 col-lg-5 custom-file">
+							<input type="file" name="image" class="custom-file-input" id="s-image">
+							<label class="custom-file-label" for="s-image">Изображение</label>
+						</div>
+						<div class="col-11 mt-2">
+							<textarea rows="6" class="form-control" name="alt" placeholder="Описание изображений"></textarea>
+						</div>
+					</div>
+					<input type="submit" value="Сохранить" class ="m-3 btn btn-outline-success">
+				</form>
+				
+				<div class="m-5 d-flex justify-content-center">
+					<button class="add btn btn-outline-success">Добавить преимущества</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="/js/admin.js"></script>
+	</body>
+</html>
