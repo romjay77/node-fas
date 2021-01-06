@@ -4,7 +4,7 @@ const fs = require('fs');
 
 
 exports.send = (toEmail, nameCustomer) => {
-  let logo = fs.readFileSync(path.resolve('emails/templates/images/logo.gif')).toString('base64');
+  let logo = fs.readFileSync(path.resolve('emails/templates/images/logo.png')).toString('base64');
 
   const email = new Email({
     send: true,
@@ -19,7 +19,7 @@ exports.send = (toEmail, nameCustomer) => {
     port: 465,
       auth: {
         user: 'info@fasadni.by',
-        pass: 'Qwerty12#'
+        pass: '!S@bchuk1'
       }
     },
     htmlToText: false,
@@ -56,7 +56,7 @@ exports.sendToAdmin = (emailAdmin, dataForm) => {
       port: 465,
       auth: {
         user: 'info@fasadni.by',
-        pass: 'Qwerty12#'
+        pass: '!S@bchuk1'
       }
     }
   });

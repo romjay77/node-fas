@@ -108,6 +108,5 @@ body > div.box {
 }
 
 .active_img {
-    content: attr(data-src);
     opacity: 1 !important;
 }

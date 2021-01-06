@@ -17,7 +17,7 @@ const projects = GetProjects();
 exports.projectSection = () => {
 	let result = '';
 	for(let j = 0; j < projects.length; j++) {
-		result += `<div class="project"><div class="title">Смотреть альбом</div><a id="${projects[j].name}" 
+		result += `<div class="project"><div class="title"><a class="button secondary" style="color: black;"><i class="fas fa-eye" style="padding-right: 10px;"></i>Смотреть альбом</a></div><a id="${projects[j].name}" 
 		class="link"><img class="img" src="${projects[j].images[0]}" alt="${projects[j].description}"></a></div>`;
 	};
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title><%- model.title1 %></title>
@@ -23,83 +22,133 @@
 	</head>
 
 	<body>
-		<nav class="nav-menu">
-			<div class="header">
-				<a class="brand" href=""><img class="logo" border="0" alt="логотип утепление фасадов, декоративные отделки, покраска фасада быстро недорого качественно" src="images/log1.gif"></a>
-			</div>
-
-			<div class="items">
-				<ul class="nav navbar-nav">
-					<li><a class="item" href="#start">ГЛАВНАЯ</a></li>
-					<li><a class="item" href="#services">УСЛУГИ</a></li>
-					<li><a class="item" href="#about">О НАС</a></li>
-					<li><a class="item" href="#projects">ПРОЕКТЫ</a></li>
-					<li><a class="item" href="#contact">КОНТАКТЫ</a></li>
-				</ul>
-			</div>
-
-			<div class="icon">
-				<ul>
-					<li class="toggle">
-						<a>
-							<div class="pbot">
-									<span class="bot">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-
-											<path d="M2 16 L30 16" />
-
-										</svg>
-									</span>
-									<span class="bot botM">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-
-											<path d="M2 16 L30 16" />
-
-										</svg>
-									</span>
-									<span class="bot botL">
-										<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-
-											<path d="M2 16 L30 16" />
-
-										</svg>
-									</span>
-							</div>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
-
 		<div id="start" class="background">	
 			<div class="gradient"></div>
 			<div class="box"></div>
 
 			<div class="main-name">
-				<div>
-					<div class="phone">
-						<a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a>
-						<br>
-						ФАСАДНЫЕ РАБОТЫ
-						<%  if (model.inst) { %> 
-							<a href="<%- model.inst %>" target="_blank"><i class="fab fa-instagram"></i></a>
-						<% } %> 
+				<div class="text-box">
+					<h1 style="margin: 0;">Предоставляем Фасадные работы</h1>
+					<p>все виды строительных работ быстро и качественно</p>
+
+					<div class="link-box">
+						<div><a class="button primary" href="tel:<%- model.phone %>"><i class="fas fa-phone" style="padding-right: 10px;"></i><tel><%- model.phone %></tel></a></div>
+						<div><a class="button secondary" href="#contact"><i class="fab fa-wpforms" style="padding-right: 10px;"></i>Заказать звонок</a></div>
+						<div>
+							<%  if (model.inst) { %> 
+								<a href="<%- model.inst %>" rel="noreferrer" target="_blank" style="font-size: xx-large;"><i class="fab fa-instagram"></i></a>
+							<% } %>
+						</div>
 					</div>
-					<a href="#services">
-						<div class="arrow">
-						<img alt="иконка стрелки вниз" 
-						src="https://static.wixstatic.com/media/c19c76_376dc1d20bd348b99c4a732a1d6d7c81.png/v1/fill/w_54,h_31,al_c,q_80,usm_0.66_1.00_0.01/c19c76_376dc1d20bd348b99c4a732a1d6d7c81.gif">
+				</div>
+			</div>
+		</div>
+
+		<div class="nav-mobile">
+			<div class="logo-box">
+				<div class="header">
+					<a class="brand" href=""><img class="logo" border="0" alt="логотип утепление фасадов, декоративные отделки, покраска фасада быстро недорого качественно" src="images/logo.svg"></a>
+				</div>
+
+				<div class="icon">
+					<a class="toggle">
+						<div class="pbot">
+								<span class="bot spanfirstOpen">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+	
+										<path d="M2 16 L30 16"></path>
+	
+									</svg>
+								</span>
+								<span class="bot botM spanmidleOpen">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+	
+										<path d="M2 16 L30 16"></path>
+	
+									</svg>
+								</span>
+								<span class="bot botL spanlastOpen">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+	
+										<path d="M2 16 L30 16"></path>
+	
+									</svg>
+								</span>
 						</div>
 					</a>
 				</div>
+			</div>
+
+			<div class="items">
+				<a class="item" href="#start">Главная</a>
+				<a class="item" href="#services">Услуги</a>
+				<a class="item" href="#about">О нас</a>
+				<a class="item" href="#projects">Проекты</a>
+			</div>
+			<div class="link-box">
+				<div><a class="button primary" href="tel:<%- model.phone %>"><i class="fas fa-phone" style="padding-right: 10px;"></i><tel><%- model.phone %></tel></a></div>
+				<div><a class="button secondary" href="#contact"><i class="fab fa-wpforms" style="padding-right: 10px;"></i>Заказать звонок</a></div>
+				<div>
+					<%  if (model.inst) { %> 
+						<a href="<%- model.inst %>" rel="noreferrer" target="_blank" style="font-size: xx-large;"><i class="fab fa-instagram"></i></a>
+					<% } %>
+				</div>
+			</div>
+		</div>
+
+		<nav class="nav-menu">
+			<a class="item" href="#start">Главная</a>
+			<a class="item" href="#services">Услуги</a>
+			<div class="header">
+				<a class="brand" href=""><img class="logo" border="0" alt="логотип утепление фасадов, декоративные отделки, покраска фасада быстро недорого качественно" src="images/logo.svg"></a>
+			</div>
+			<a class="item" href="#about">О нас</a>
+			<a class="item" href="#projects">Проекты</a>
+
+			<div class="icon">
+				<a class="toggle">
+					<div class="pbot">
+							<span class="bot">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+
+									<path d="M2 16 L30 16" />
+
+								</svg>
+							</span>
+							<span class="bot botM">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+
+									<path d="M2 16 L30 16" />
+
+								</svg>
+							</span>
+							<span class="bot botL">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+
+									<path d="M2 16 L30 16" />
+
+								</svg>
+							</span>
+					</div>
+				</a>
+			</div>
+		</nav>
+
+		<div class="offers">
+			<h3 class="article">Почему именно мы</h3>
+			<div class="box">
+				<% model.advantages.forEach(function(element) { %>
+					<div class="offer">
+						<div><img src="<%- element.image %>" alt="<%- element.alt %>"></div>
+						<div><%- element.name %></div>
+					</div>
+				<% }); %>
 			</div>
 		</div>
 
 		<div id="services" class="services-box">
 			<div>
-				<h2 class="article">УСЛУГИ</h2>
-				<div class="line"><div></div></div>
-				<div class="s-tel"><a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></div>
+				<h2 class="article">Наши услуги</h2>
 			</div>
 
 			<div class="group">
@@ -111,32 +160,25 @@
 		<div id="about" class="about-us">
 			<div class="box">
 				<div>
-					<h2 class="article">О НАС</h2>
-					<div class="line"><div></div></div>
+					<h2 class="article">О нас</h2>
 				</div>
 				<div class="text"><%- model.aboutus %></div>
-				<h3 class="article">ЗВОНИТЕ ПО НОМЕРУ</h3>
-				<div class="s-tel"><a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></div>
-			</div>
-		</div>
-
-		<div class="offers">
-			<h3 class="article">НАШИ ПРЕИМУЩЕСТВА</h3>
-			<div class="box">
-				<% model.advantages.forEach(function(element) { %>
-					<div class="offer">
-						<div><img src="<%- element.image %>" alt="<%- element.alt %>"></div>
-						<div><%- element.name %></div>
+				<h3 class="article">Обязательно свяжитесь с нами</h3>
+				<div class="link-box">
+					<div>
+						<%  if (model.inst) { %> 
+							<a href="<%- model.inst %>" rel="noreferrer" target="_blank" style="font-size: xx-large;"><i class="fab fa-instagram"></i></a>
+						<% } %>
 					</div>
-				<% }); %>
+					<div><a class="button primary" href="tel:<%- model.phone %>"><i class="fas fa-phone" style="padding-right: 10px;"></i><tel><%- model.phone %></tel></a></div>
+					<div><a class="button secondary" href="#contact"><i class="fab fa-wpforms" style="padding-right: 10px;"></i>Заказать звонок</a></div>
+				</div>
 			</div>
 		</div>
 
 		<div id="projects" class="projects">
 			<div>
-				<h2 class="article">ПРОЕКТЫ</h2>
-				<div class="line"><div></div></div>
-				<div class="s-tel"><a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></div>
+				<h2 class="article">Нашт проекты</h2>
 			</div>
 			<div class="box">
 				<%- model.projects %>
@@ -145,9 +187,7 @@
 
 		<div id="contact" class="contact">
 			<div>
-				<h2 class="article">КОНТАКТЫ</h2>
-				<div class="line"><div></div></div>
-				<div class="s-tel"><a href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></div>
+				<h2 class="article">Наши контакты</h2>
 			</div>
 			<div class="box">
 				<div class="left-box">
@@ -160,13 +200,6 @@
 								</div>
 							</div>
 						<% }); %>
-					</div>
-
-					<div class="info">
-						<span class="s-text">Если у Вас остались вопросы, Вы можете нам позвонить или заполнить данную форму.</span>
-						<span class="s-text">Телефон: <a class="s-phone"href="tel:<%- model.phone %>"><tel><%- model.phone %></tel></a></span>
-						<span class="s-text">Электронная почта: <a class="email"href="mailto:info@fasadni.by"><email>info@fasadni.by</email></a></span>					
-						<span class="s-text">Разработчик сайта: <a class="email"href="mailto:romjay77@gmail.com"><email>romjay77@gmail.com</email></a></span>
 					</div>
 				</div>
 
@@ -198,12 +231,19 @@
 						<div class="form-btn">
 							<button>
 								<span>
-									<i class="far fa-paper-plane"></i>
+									<i class="far fa-paper-plane" style="padding-right: 10px;"></i>
 									Отправить
 								</span>
 							</button>
 						</div>
 					</form>
+				</div>
+
+				<div class="info">
+					<span class="s-text">Если у Вас остались вопросы, Вы можете нам позвонить или заполнить данную форму.</span>
+					<span class="s-text">Телефон: <a class="s-phone" href="tel:+375 29 7711977"><tel>+375 29 7711977</tel></a></span>
+					<span class="s-text">Электронная почта: <a class="email" href="mailto:info@fasadni.by"><email>info@fasadni.by</email></a></span>					
+					<span class="s-text">Разработчик сайта: <a class="email" href="mailto:romjay77@gmail.com"><email>romjay77@gmail.com</email></a></span>
 				</div>
 			</div>
 			<div id="root-frame-bckg" ></div>

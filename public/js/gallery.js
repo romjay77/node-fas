@@ -10,7 +10,7 @@ function closeFrame() {
 }
 
 $(document).ready(function() {
-	addactive();
+	addactive(0);
 	document.body.addEventListener("touchstart", touchstartEvent);
 	document.body.addEventListener("touchend", touchsendEvent);
 	function touchstartEvent (ev) {
@@ -42,13 +42,8 @@ function transformRightAdv() {
 	for(let i = 0; i < arrayImg.length; i++) {
 		if(img[0] === arrayImg[i]) {
 			$(img).removeClass('active_img');
-			$(img).removeAttr('src');
-			let trgt = arrayImg[i + 1] === undefined ? arrayImg[0] : arrayImg[i + 1];
-			$(trgt).addClass('active_img');
-			$(trgt).attr('src', $(trgt).data('src'));
-			setTimeout(() => {
-				checkImg(trgt);
-			}, 100);
+			let index = i + 1 >= arrayImg.length ? 0 : i + 1;
+			addactive(index);
 			break;
 		}
 	}
@@ -59,13 +54,8 @@ function transformLeftAdv() {
 	for(let i = 0; i < arrayImg.length; i++) {
 		if(img[0] === arrayImg[i]) {
 			$(img).removeClass('active_img');
-			$(img).removeAttr('src');
-			let trgt = arrayImg[i - 1] === undefined ? arrayImg[arrayImg.length - 1] : arrayImg[i - 1];
-			$(trgt).addClass('active_img');
-			$(trgt).attr('src', $(trgt).data('src'));
-			setTimeout(() => {
-				checkImg(trgt);
-			}, 100);		
+			let index = i - 1 < 0 ? arrayImg.length - 1 : i - 1;
+			addactive(index);
 			break;
 		}
 	}
@@ -108,12 +98,24 @@ function smallCheck(target, array) {
 	return array.includes(target);
 }
 
-function addactive() { 
-	$(arrayImg[0]).addClass('active_img');
-	$(arrayImg[0]).attr('src', $(arrayImg[0]).data('src'));
+function addactive(i) { 
+	$(arrayImg[i]).addClass('active_img');
+
+	setSrc(i-1);
+	setSrc(i);
+	setSrc(i+1);
+
 	setTimeout(() => {
-		checkImg(arrayImg[0]);
+		checkImg(arrayImg[i]);
 	}, 100);
+}
+
+function setSrc(i) {
+	let index = i < 0 ? arrayImg.length -1 : 
+		i >= arrayImg.length ? arrayImg.length -1 : i;
+	if(!$(arrayImg[index]).attr('src')) {
+		$(arrayImg[index]).attr('src', $(arrayImg[index]).data('src'));
+	}
 }
 
 function checkImg(img) {
