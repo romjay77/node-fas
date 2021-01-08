@@ -48,10 +48,12 @@ $(document).ready(() => {
 	$('.project').on('touchend', projectEffect);
 	$('.project').hover(projectEffect, projectEffect);
 
-	servicePosition = $('#services').position();
-	aboutPosition = $('#about').position();
-	projectPosition = $('#projects').position();
-	contactPosition = $('#contact').position();
+	setTimeout(() => {
+		servicePosition = $('#services').position();
+		aboutPosition = $('#about').position();
+		projectPosition = $('#projects').position();
+		contactPosition = $('#contact').position();
+	}, 100);
 
 	startCalculationPostsWidth(6);
 });
@@ -96,6 +98,7 @@ function calculatePostsWidth(count) {
 }
 
 function ancorsScrolling() {
+	if(!servicePosition || !aboutPosition || !projectPosition || !contactPosition) return;
 	let scrolTop = $(window).scrollTop();
 	let height = $(window).height();
 	if (scrolTop + height > contactPosition.top) {

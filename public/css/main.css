@@ -170,7 +170,7 @@ nav.nav-menu::after {
 	z-index: 500;
     display: none;
     justify-content: center;
-    align-items: center;
+	align-items: center;
 }
 .fixed-menu .header {
 	min-width: 150px ;
@@ -195,11 +195,9 @@ nav.nav-menu::after {
 	opacity: 1;
 	}
 }
-@keyframes show-menu { from { 
-	top: -50px;
+@keyframes show-menu { from {
 	opacity: 0;
- } to { 
-	top: 0;
+ } to {
 	opacity: 1;
 	}
 }
@@ -220,7 +218,7 @@ nav.nav-menu::after {
 .background .box {
 	height: 100%;
 	width: 100%;
-	position: fixed;
+	position: relative;
 	z-index: -1;
 	background-image: url(/images/back1.jpg);
 	-o-background-size: cover;
