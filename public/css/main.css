@@ -21,7 +21,7 @@ a {
 	line-height: 1.7;
 	color: #666666;
 	margin: 0px;
-	transition: 0.3s;
+	transition: 0.5s;
 }
 
 a:hover {
@@ -40,7 +40,7 @@ a:focus {
 	padding: 10px 20px;
 	border: 1px solid;
 	border-radius: 25px;
-	transition: 0.3s;
+	transition: 0.5s;
 	position: relative;
 }
 
@@ -50,7 +50,7 @@ a:focus {
 }
 
 .shadow {
-	transition: 0.3s;
+	transition: 0.5s;
 	box-shadow: 0 5px 10px 1px rgba(0,0,0,.65);
 }
 
@@ -66,7 +66,6 @@ a:focus {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	/* transition: 0.3s; */
 }
 
 .header {
@@ -90,7 +89,7 @@ a:focus {
 .item {
 	border-radius: 25px;
 	padding: 0px 10px;
-	transition: 0.3s;
+	transition: 0.5s;
 	color: white !important;
 	margin: 0 2vw;
 	font-size: x-large;
@@ -160,24 +159,49 @@ nav.nav-menu::after {
 	background-color: white;
 }
 
-.fixed-menu::after {
-	display: none;
-}
 .fixed-menu {
 	position: fixed;
 	top: 0;
+	opacity: 1;
 	width: 100%;
 	height: 50px;
 	box-shadow: 0 3px 10px 0px rgba(0,0,0,.65);
 	background: linear-gradient(142deg, rgb(23, 22, 99, 0.8) 0%, rgb(107, 56, 123, 0.8) 50%, rgb(193, 177, 99, 0.8) 100%);
+	z-index: 500;
+    display: none;
+    justify-content: center;
+    align-items: center;
 }
 .fixed-menu .header {
-	min-width: 150px !important;
-	height: 50px !important;
+	min-width: 150px ;
+	height: 50px;
 }
 .fixed-menu .header .brand .logo {
-	width: 150px !important;
-	bottom: 50px !important;
+	width: 150px;
+	bottom: 50px;
+}
+
+.show-menu {
+	display: flex !important;
+
+	-webkit-animation:  0.5s show-menu;
+	animation:  0.5s show-menu;
+}
+@-webkit-keyframes show-menu { from { 
+	top: -50px;
+	opacity: 0;
+ } to { 
+	top: 0;
+	opacity: 1;
+	}
+}
+@keyframes show-menu { from { 
+	top: -50px;
+	opacity: 0;
+ } to { 
+	top: 0;
+	opacity: 1;
+	}
 }
 
 .background {
@@ -196,7 +220,7 @@ nav.nav-menu::after {
 .background .box {
 	height: 100%;
 	width: 100%;
-	position: relative;
+	position: fixed;
 	z-index: -1;
 	background-image: url(/images/back1.jpg);
 	-o-background-size: cover;
@@ -286,7 +310,7 @@ nav.nav-menu::after {
 	text-align: center;
 	padding: 0 1vw;
 	position: relative;
-	transition: 0.3s;
+	transition: 0.5s;
 	display: -webkit-flex;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -320,7 +344,7 @@ nav.nav-menu::after {
 .service > div {
 	width: 300px;
 	min-height: 690px;
-	transition: 0.3s;
+	transition: 0.5s;
 	overflow: hidden;
 	border-radius: 20px;
 	position: relative;
@@ -351,15 +375,15 @@ nav.nav-menu::after {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	transition:  0.3s;
+	transition:  0.5s;
 }
 
 .active-point {
 	height: 20px;
 	width: 20px;
 
-	-webkit-animation:  0.3s active-point-animation;
-	animation:  0.3s active-point-animation;
+	-webkit-animation:  0.5s active-point-animation;
+	animation:  0.5s active-point-animation;
 }
 
 .active-point > div {
@@ -369,8 +393,8 @@ nav.nav-menu::after {
 	border-radius: 50px;
 	background-color: black;
 	
-	-webkit-animation:  0.3s active-point-animation1;
-	animation:  0.3s active-point-animation1;
+	-webkit-animation:  0.5s active-point-animation1;
+	animation:  0.5s active-point-animation1;
 }
 
 .shadow-effect {
@@ -432,8 +456,6 @@ nav.nav-menu::after {
 	text-align: center;
 	margin: 0 !important;
 	padding: 1vh 1vw !important;
-	transition: 0.3s;
-	opacity: 0;
 }
 
 .offers .box {
@@ -457,14 +479,10 @@ nav.nav-menu::after {
 
 .offer img {
 	max-height: 100px;
-	opacity: 0;
-	transition: 0.3s;
 }
 
 .offer div {
 	padding: 1vh 1vw;
-	opacity: 0;
-	transition: 0.3s;
 }
 
 .opacity {
@@ -486,7 +504,7 @@ nav.nav-menu::after {
 	position: relative;
 	width: calc(50% - 30px);
 	margin: 20px 0 0 20px;
-	transition: 0.3s;
+	transition: 0.5s;
 	overflow: hidden;
 	border-radius: 25px;
 }
@@ -507,11 +525,12 @@ nav.nav-menu::after {
 
 .project .link img {
 	width: 100%;
-	transition: 0.3s;
+	transition: 0.5s;
 }
 
 .contact {
 	padding: 60px 0% 0% 0%;
+	background-color: white;
 }
 
 .contact .box {
@@ -562,7 +581,7 @@ nav.nav-menu::after {
 	overflow: hidden;
 	font-size: x-large;
 	max-height: 100px;
-	transition: 0.3s;
+	transition: 0.5s;
 	user-select: none;
 }
 
@@ -636,7 +655,7 @@ input[type=text], input[type=submit], textarea {
 }
 
 .input:focus {
-	transition: 0.3s;
+	transition: 0.5s;
 	transform: scale(1.05);
 }
 
@@ -663,7 +682,7 @@ input[type=text], input[type=submit], textarea {
 	text-align: left;  
 	visibility: hidden;
 	opacity: 0;
-	transition: 0.3s;
+	transition: 0.5s;
 }
   
 .alert-validate::after {
@@ -698,7 +717,7 @@ input[type=text], input[type=submit], textarea {
 	padding: 10px 20px;
     border: 1px solid;
     border-radius: 25px;
-    transition: 0.3s;
+    transition: 0.5s;
 	position: relative;
 	background: white;
     font-size: large;
@@ -732,7 +751,7 @@ input[type=text], input[type=submit], textarea {
 	top: 0;
 	height: 100%;
 	width: 100%;
-	transition: 0.3s;
+	transition: 0.5s;
 	background-color: #443F6F;
 }
 
@@ -822,13 +841,14 @@ input[type=text], input[type=submit], textarea {
 }
 
 @media screen and (max-width: 1045px){
-	.nav-menu > .item {
+	.nav-menu > .item, .fixed-menu > .item{
 		display: none;
 	}
 
-	.nav-menu {
+	.nav-menu, .fixed-menu {
 		justify-content: space-between;
 	}
+	
 	.header {
 		padding: 0 2vw;
 	}
@@ -851,49 +871,49 @@ input[type=text], input[type=submit], textarea {
 	}
 
    .spanfirstOpen {
-	   transition: 0.3s;
+	   transition: 0.5s;
 	   transform: rotateZ(-45deg);
 	   margin-left: 2px;
 	   margin-top: 10px;
 	}
 
    .spanlastOpen {
-	   transition: 0.3s;
+	   transition: 0.5s;
 	   transform: rotateZ(45deg);
 	   margin-top: 10px;
 	   margin-left: -2px;
 	}
 
    .spanmidleOpen {
-	   transition: 0.3s;
+	   transition: 0.5s;
 	   opacity: 0;
 	}
 
    .spanfirstClose {
-	   transition: 0.3s;
+	   transition: 0.5s;
 	   transform: rotateZ(0);
 	   margin-left: 0px;
 	   margin-top: 0px;
 	}
 
    .spanlastClose {
-	   transition: 0.3s;
+	   transition: 0.5s;
 	   transform: rotateZ(0);
 	   margin-top: 20px;
 	   margin-left: 0px;
 	}
 
    .spanmidleClose {
-	   transition: 0.3s;
+	   transition: 0.5s;
 	   opacity: 1;
 	}
 
    .opened {
 		display: block;
-		transition: 0.3s;
+		transition: 0.5s;
 		opacity: 1;
-		-webkit-animation:  0.3s show-animation;
-		animation:  0.3s show-animation;
+		-webkit-animation:  0.5s show-animation;
+		animation:  0.5s show-animation;
 	}
 
    .icon {
@@ -997,8 +1017,12 @@ input[type=text], input[type=submit], textarea {
 }
 
 @media screen and (max-width: 450px){
-
 	.offer {
 		width: 100%;
+	}
+
+	.main-name h1 {
+		font-size: xx-large;
+		padding: 1vh 1vw;
 	}
 }

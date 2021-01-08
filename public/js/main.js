@@ -12,7 +12,7 @@ $(document).ready(() => {
 		let position = $(hash).offset().top;
 		$('html, body').animate({		  
 			scrollTop: position
-		}, 400, () => {
+		}, 800, () => {
 			window.location.hash = hash;
 		});
 	});
@@ -58,7 +58,7 @@ $(document).ready(() => {
 
 $(window).on('scroll', e => {
 	parralaxBackground();
-	scrollingOffers();	
+	//scrollingOffers();	
 	ancorsScrolling();
 });
 
@@ -188,7 +188,7 @@ $('.question').click((event) => {
 	$(event.currentTarget).toggleClass('show-answer');
 });
 
-$('.nav-menu .toggle').click(function() {
+$('.nav-menu .toggle, .fixed-menu .toggle').click(function() {
 	toggle();
 	$('div.nav-mobile').toggleClass('opened');
 });
@@ -200,7 +200,13 @@ $('div.nav-mobile a').click(function() {
 
 function toggle()
 {
-	let array = $('.nav-menu div.icon > a > div > span').toArray();
+	toggleEffect('.nav-menu div.icon > a > div > span');
+	toggleEffect('.fixed-menu div.icon > a > div > span');
+}
+
+function toggleEffect(selector)
+{
+	let array = $(selector).toArray();
 	if(array[0].getAttribute('class').includes('Open'))
 	{
 		array[0].classList.remove('spanfirstOpen');
@@ -407,10 +413,10 @@ function parralaxBackground() {
 }
 
 function swithMeny(on) {
-	let has = $('.nav-menu').hasClass('fixed-menu');
+	let has = $('.fixed-menu').hasClass('show-menu');
 	if(on && !has) {
-		$('.nav-menu').addClass('fixed-menu');
+		$('.fixed-menu').addClass('show-menu');
 	} else if(!on && has) {
-		$('.nav-menu').removeClass('fixed-menu');
+		$('.fixed-menu').removeClass('show-menu');
 	}
 }
