@@ -58,7 +58,6 @@ $(document).ready(() => {
 
 $(window).on('scroll', e => {
 	parralaxBackground();
-	//scrollingOffers();	
 	ancorsScrolling();
 });
 
@@ -148,24 +147,6 @@ function setTitle(number) {
 	$('meta[name="description"]').attr("content", desc);
 	$('.item').removeClass('active');
 	$(selector).addClass('active');
-}
-
-function scrollingOffers() {
-	let positionOffers = $('.offers').position();
-
-	if(!positionOffers) return;
-	
-	let height = $(window).height() + $(window).scrollTop() - 150;
-	if(positionOffers.top < height) {
-		$('.offer div').addClass('opacity');
-		$('.offer img').addClass('opacity');
-		$('.offers .article').addClass('opacity');
-	}
-	else {
-		$('.offer div').removeClass('opacity');
-		$('.offer img').removeClass('opacity');
-		$('.offers .article').removeClass('opacity');
-	}	
 }
 
 function projectEffect(event) {
